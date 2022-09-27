@@ -5,12 +5,13 @@ function Users() {
 
     // fetch data inside useEffect
     useEffect(() => {
+        console.log('use effect')
         fetch('http://api.open-notify.org/astros.json')
         .then(response => response.json())
         .then(data => {
             setPeopleInSpace(data.people);
         })
-    })
+    }, [])
   return (
     <div>
         <h5>People in Space API</h5>
@@ -18,7 +19,7 @@ function Users() {
             {
                 peopleInSpace.map(person => {
                     return person.name;
-                }, [])
+                })
             }
         </div>
     </div>
